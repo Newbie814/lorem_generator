@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
+
 import data from './data';
+import { nanoid } from 'nanoid';
 
 const App = () => {
   const [count, setCount] = useState(1);
@@ -20,7 +21,6 @@ const App = () => {
     <section className='section-center'>
       <h4>tired of boring lorem?</h4>
       <form className='lorem-form' onSubmit={handleSubmit}>
-        {/* <h4>Add User</h4> */}
         <label htmlFor='amount'>Paragraphs:</label>
         <input
           type='number'
@@ -38,8 +38,9 @@ const App = () => {
       </form>
       {/* render users below */}
       <article className='lorem-text'>
-        {text.map((item, index) => {
-          return <p key={index}>{item}</p>;
+        {text.map((item) => {
+          const id = nanoid();
+          return <p key={id}>{item}</p>;
         })}
       </article>
     </section>
