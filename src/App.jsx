@@ -10,10 +10,16 @@ const App = () => {
     setCount(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let amount = parseInt(count);
+    setText(data.slice(0, amount));
+  };
+
   return (
     <section className='section-center'>
       <h4>tired of boring lorem?</h4>
-      <form className='lorem-form'>
+      <form className='lorem-form' onSubmit={handleSubmit}>
         {/* <h4>Add User</h4> */}
         <label htmlFor='amount'>Paragraphs:</label>
         <input
@@ -31,6 +37,11 @@ const App = () => {
         </button>
       </form>
       {/* render users below */}
+      <article className='lorem-text'>
+        {text.map((item, index) => {
+          return <p key={index}>{item}</p>;
+        })}
+      </article>
     </section>
   );
 };
